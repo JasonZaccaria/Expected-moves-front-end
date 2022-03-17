@@ -1,0 +1,12 @@
+.Graph-container {
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  background-color: black;
+}
+
+.mini {
+  width: 100%;
+  height: 100%;
+}
