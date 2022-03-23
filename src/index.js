@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import App from "./App";
 import Navbar from "./navbar";
 import DropDown from "./dropdown";
 import Form from "./form";
 import Graph from "./graph";
 import Table from "./table";
-//import DoughnutChart from "./charts/Doughnut";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -15,8 +13,6 @@ ReactDOM.render(
     <Navbar />
     <DropDown />
     <Form />
-
-    <Table />
   </React.StrictMode>,
   document.getElementById("root")
 );
