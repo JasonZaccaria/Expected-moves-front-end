@@ -1,6 +1,5 @@
 import "./form.css";
-import React, { useEffect } from "react";
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 //import TestGraph from "./testGraph.js";
@@ -19,6 +18,15 @@ function Form() {
   let [updateHigh, setUpdateHigh] = useState(0);
   let [updateLow, setUpdateLow] = useState(0);
   let [updateVol, setUpdateVol] = useState(0);
+  let [callPost, setCallPost] = useState({});
+  let [callGet, setCallGet] = useState({});
+  //below is our state for disabling our onclick until our function finishes completely
+  let [isDisabled, setIsDisabled] = useState(false);
+  //below are our refs for disabling our keeping track of button clicks and handling our first render
+  let count = useRef(false);
+  let clear = useRef(0);
+  //below is our ref for clearing our setinterval
+  let stopInterval = useRef();
 
   let data = {
     labels: expDates, //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -38,9 +46,13 @@ function Form() {
       },
     ],
   };
-
+  //This is our onclick function to access our backends rest api for data
   async function changeMe(e) {
+    //we start off by disabling our button while running and preventing html form from submitting
+    setIsDisabled(true);
     e.preventDefault();
+    clear.current++;
+    //below is our post request
     async function post() {
       const url = "http://127.0.0.1:8000/post/";
       const data = new URLSearchParams();
@@ -55,52 +67,79 @@ function Form() {
       });
       return response.json();
     }
+    //below is our get request
     async function get() {
       const response = await fetch("http://127.0.0.1:8000/get/", {
         credentials: "include",
       });
       return response.json();
     }
-    async function together() {
-      let callPost = await post();
-      let callGet = await get();
-      return [callPost, callGet];
+    //below we are sending both requests out at the same time as well as repeating our get request with set interval
+    async function combineRequests() {
+      async function sendRequests() {
+        let createPost = await post();
+        let createGet = await get();
+        setCallPost(createPost);
+        setCallGet(createGet);
+      }
+      let getResponses = await sendRequests();
+      stopInterval.current = setInterval(async () => {
+        let repeater = await get();
+        setCallGet(repeater);
+      }, 3000);
     }
-    let update = await together();
-    console.log(update);
-    console.log(update[1]["quotes"]["Open"][0]);
-
-    //Below we are seperating out all the arrays to get ready to reset our state to these new arrays
-    let updateX = update[0]["expected_moves"]["exp_dates"];
-    let updateStdvUp = update[0]["expected_moves"]["higher"];
-    let updateStdvDown = update[0]["expected_moves"]["lower"];
-
-    //Changing state now in function
-    setUpdateAdjClose(update[1]["quotes"]["Adj Close"][0]);
-    setUpdateOpen(update[1]["quotes"]["Open"][0]);
-    setUpdateHigh(update[1]["quotes"]["High"][0]);
-    setUpdateLow(update[1]["quotes"]["Low"][0]);
-    setUpdateVol(update[1]["quotes"]["Volume"][0]);
-
-    data = {
-      labels: setExpDates(updateX), //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      datasets: [
-        {
-          label: "First dataset",
-          data: setStdv_up(updateStdvUp), //[33, 53, 85, 41, 44, 65],
-          fill: true,
-          backgroundColor: "rgba(75,192,192,0.2)",
-          borderColor: "rgba(75,192,192,1)",
-        },
-        {
-          label: "Second dataset",
-          data: setStdv_down(updateStdvDown), //[33, 25, 35, 51, 54, 76],
-          fill: false,
-          borderColor: "#742774",
-        },
-      ],
-    };
+    if (clear.current === 1) {
+      let finalResponse = await combineRequests();
+    } else {
+      clearInterval(stopInterval.current);
+      let finalResponse = await combineRequests();
+      clear.current = 1;
+    }
+    //we undisable our button finally
+    setIsDisabled(false);
   }
+  //Below we use count.current to keep track of first render and then update our states and change data
+  useEffect(() => {
+    if (count.current) {
+      console.log(stopInterval);
+      let update = [callPost, callGet];
+      console.log(update);
+      console.log(update[1]["quotes"]["Open"][0]);
+
+      //Below we are seperating out all the arrays to get ready to reset our state to these new arrays
+      let updateX = update[0]["expected_moves"]["exp_dates"];
+      let updateStdvUp = update[0]["expected_moves"]["higher"];
+      let updateStdvDown = update[0]["expected_moves"]["lower"];
+
+      //Changing state now in function
+      setUpdateAdjClose(update[1]["quotes"]["Adj Close"][0]);
+      setUpdateOpen(update[1]["quotes"]["Open"][0]);
+      setUpdateHigh(update[1]["quotes"]["High"][0]);
+      setUpdateLow(update[1]["quotes"]["Low"][0]);
+      setUpdateVol(update[1]["quotes"]["Volume"][0]);
+
+      data = {
+        labels: setExpDates(updateX), //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [
+          {
+            label: "First dataset",
+            data: setStdv_up(updateStdvUp), //[33, 53, 85, 41, 44, 65],
+            fill: true,
+            backgroundColor: "rgba(75,192,192,0.2)",
+            borderColor: "rgba(75,192,192,1)",
+          },
+          {
+            label: "Second dataset",
+            data: setStdv_down(updateStdvDown), //[33, 25, 35, 51, 54, 76],
+            fill: false,
+            borderColor: "#742774",
+          },
+        ],
+      };
+    } else {
+      count.current = true;
+    }
+  }, [callGet]);
   return (
     <>
       <div className="form-class" id="form-id">
@@ -157,6 +196,7 @@ function Form() {
                 className="button-submit"
                 type="submit"
                 onClick={changeMe}
+                disabled={isDisabled}
               >
                 Submit
               </button>
