@@ -27,7 +27,7 @@ function Form() {
   let clear = useRef(0);
   //below is our ref for clearing our setinterval
   let stopInterval = useRef();
-
+  let toggleBool;
   let data = {
     labels: expDates, //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
@@ -51,49 +51,66 @@ function Form() {
     //we start off by disabling our button while running and preventing html form from submitting
     setIsDisabled(true);
     e.preventDefault();
-    clear.current++;
-    //below is our post request
-    async function post() {
-      const url = "http://127.0.0.1:8000/post/";
-      const data = new URLSearchParams();
-      const formElement = document.getElementById("form-itself");
-      for (const pair of new FormData(formElement)) {
-        data.append(pair[0], pair[1]);
+    try {
+      clear.current++;
+      //below is our post request
+      async function post() {
+        const url = "http://127.0.0.1:8000/post/";
+        const data = new URLSearchParams();
+        const formElement = document.getElementById("form-itself");
+        for (const pair of new FormData(formElement)) {
+          data.append(pair[0], pair[1]);
+        }
+        const response = await fetch(url, {
+          method: "POST",
+          body: data,
+          credentials: "include",
+        });
+        //console.log(response.json());
+        return response.json();
       }
-      const response = await fetch(url, {
-        method: "POST",
-        body: data,
-        credentials: "include",
-      });
-      return response.json();
-    }
-    //below is our get request
-    async function get() {
-      const response = await fetch("http://127.0.0.1:8000/get/", {
-        credentials: "include",
-      });
-      return response.json();
-    }
-    //below we are sending both requests out at the same time as well as repeating our get request with set interval
-    async function combineRequests() {
-      async function sendRequests() {
-        let createPost = await post();
-        let createGet = await get();
-        setCallPost(createPost);
-        setCallGet(createGet);
+      //below is our get request
+      async function get() {
+        const response = await fetch("http://127.0.0.1:8000/get/", {
+          credentials: "include",
+        });
+        return response.json();
       }
-      let getResponses = await sendRequests();
-      stopInterval.current = setInterval(async () => {
-        let repeater = await get();
-        setCallGet(repeater);
-      }, 3000);
-    }
-    if (clear.current === 1) {
-      let finalResponse = await combineRequests();
-    } else {
-      clearInterval(stopInterval.current);
-      let finalResponse = await combineRequests();
-      clear.current = 1;
+      //below we are sending both requests out at the same time as well as repeating our get request with set interval
+      async function combineRequests() {
+        async function sendRequests() {
+          let createPost = await post();
+          let createGet = await get();
+          setCallPost(createPost);
+          setCallGet(createGet);
+        }
+        let getResponses = await sendRequests();
+        stopInterval.current = setInterval(async () => {
+          let repeater = await get();
+          setCallGet(repeater);
+        }, 3000);
+      }
+      if (clear.current === 1) {
+        let finalResponse = await combineRequests();
+      } else {
+        clearInterval(stopInterval.current);
+        let finalResponse = await combineRequests();
+        clear.current = 1;
+      }
+      const revertTextField = document.getElementById("text-id");
+      revertTextField.classList.remove("text-input-two");
+      revertTextField.classList.add("text-input");
+      const revertError = document.getElementById("error-none-id");
+      revertError.classList.remove("error-div");
+      revertError.classList.add("error-none");
+    } catch {
+      //below we will change text input styling to show incorrect input
+      const grabTextInput = document.getElementById("text-id");
+      grabTextInput.classList.remove("text-input");
+      grabTextInput.classList.add("text-input-two");
+      const grabFormTop = document.getElementById("error-none-id");
+      grabFormTop.classList.remove("error-none");
+      grabFormTop.classList.add("error-div");
     }
     //we undisable our button finally
     setIsDisabled(false);
@@ -154,9 +171,19 @@ function Form() {
             action="http://127.0.0.1:8000/post/"
             method="POST"
           >
-            <div className="form-top">
+            <div className="form-top" id="form-top-id">
               <label htmlFor="text">Enter Ticker</label>
-              <input className="text-input" type="text" name="text"></input>
+              <div className="text-and-error" id="text-and-error-id">
+                <input
+                  className="text-input"
+                  type="text"
+                  name="text"
+                  id="text-id"
+                ></input>
+                <div className="error-none" id="error-none-id">
+                  Incorrect Ticker
+                </div>
+              </div>
             </div>
             <div className="radio-container">
               <label htmlFor="radio">Standard Deviation</label>
@@ -220,7 +247,9 @@ function Form() {
                 <td className="td">{updateOpen.toFixed(2)}</td>
                 <td className="td">{updateHigh.toFixed(2)}</td>
                 <td className="td">{updateLow.toFixed(2)}</td>
-                <td className="td">{updateVol.toFixed(0)}</td>
+                <td className="td" id="volume-id">
+                  {updateVol.toFixed(0)}
+                </td>
               </tr>
             </tbody>
           </table>

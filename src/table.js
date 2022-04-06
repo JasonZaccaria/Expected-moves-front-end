@@ -18,13 +18,14 @@ function Table(props) {
       }
       for (let i = 0; i < expDates.length; i++) {
         let createTr = document.createElement("tr");
+        createTr.classList.add("tr-space-even");
         //changes start here:
         let createTdOne = document.createElement("td");
         let createTdTwo = document.createElement("td");
         let createTdThree = document.createElement("td");
         createTdOne.innerHTML = expDates[i];
-        createTdTwo.innerHTML = stdv_up[i];
-        createTdThree.innerHTML = stdv_down[i];
+        createTdTwo.innerHTML = stdv_up[i].toFixed(2);
+        createTdThree.innerHTML = stdv_down[i].toFixed(2);
         createTr.appendChild(createTdOne);
         createTr.appendChild(createTdTwo);
         createTr.appendChild(createTdThree);
@@ -38,11 +39,11 @@ function Table(props) {
   return (
     <div className="table-class">
       <table className="mainTable" id="mainTableId">
-        <thead>
-          <tr>
-            <th>Expiration Dates</th>
-            <th>Stdv Higher</th>
-            <th>Stdv Lower</th>
+        <thead className="thead-space">
+          <tr className="tr-space-even">
+            <th className="th-space">Expiration Dates</th>
+            <th className="th-space">Stdv Higher</th>
+            <th className="th-space">Stdv Lower</th>
           </tr>
         </thead>
         <tbody id="mainTbody"></tbody>

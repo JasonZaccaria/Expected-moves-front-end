@@ -5,3 +5,31 @@
   grid-row-end: 6;
   background-color: gray;
 }
+
+.mainTable {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-evenly;*/
+}
+.thead-space {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4427c5;
+  color: lightgray;
+}
+
+#mainTbody {
+  overflow-y: auto;
+}
+
+.tr-space-even {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}

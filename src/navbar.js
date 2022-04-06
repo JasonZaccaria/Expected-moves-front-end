@@ -13,14 +13,14 @@ function Navbar() {
       action.style.display = "flex";
       action.style.height = "100%";
       action.style.width = "100%";
-      resizePlus.style.gridTemplateRows = "50px 150px 300px 300px 300px";
+      resizePlus.style.gridTemplateRows = "50px 150px 325px 300px 345px";
     } else if (count > 1) {
       count = 0;
       me.src = require("./assets/hamburger_before.png");
       action.style.display = "none";
       action.style.height = "0%";
       action.style.width = "0%";
-      resizePlus.style.gridTemplateRows = "50px 0px 300px 300px 300px";
+      resizePlus.style.gridTemplateRows = "50px 0px 325px 300px 345px";
     }
   }
   return (
