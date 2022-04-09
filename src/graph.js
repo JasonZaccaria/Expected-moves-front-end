@@ -45,7 +45,6 @@ function Graph(props) {
     <div className="Graph-container">
       <div className="mini">
         <Line data={data} options={{ maintainAspectRatio: false }} />
-        <h1>Hello worldadf asdf</h1>
       </div>
     </div>
   );

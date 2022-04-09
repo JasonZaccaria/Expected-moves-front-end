@@ -51,6 +51,12 @@ function Form() {
     //we start off by disabling our button while running and preventing html form from submitting
     setIsDisabled(true);
     e.preventDefault();
+    //let resize_table = document.getElementById("root");
+    //resize_table.style.gridTemplateRows = "50px 0px 325px 300px 345px";
+    //let test_drop = document.getElementById("drop-menu-id");
+    //test_drop.style.display = "none";
+    //let test_var = document.getElementById("change-table-grid-size").offsetHeight;
+    //console.log(test_var);
     try {
       clear.current++;
       //below is our post request
@@ -162,8 +168,8 @@ function Form() {
       <div className="form-class" id="form-id">
         <div className="form-container" id="form-container-id">
           <p className="form-description">
-            Welcome this tool allows you to view the probabilty cone of a ticker
-            symbol.
+            Welcome this tool allows you to view the probability cone of a
+            ticker
           </p>
           <form
             id="form-itself"
@@ -258,7 +264,6 @@ function Form() {
       <div className="Graph-container">
         <div className="mini">
           <Line data={data} options={{ maintainAspectRatio: false }} />
-          <h1>Hello worldadf asdf</h1>
         </div>
       </div>
       <Table expDates={expDates} stdv_up={stdv_up} stdv_down={stdv_down} />

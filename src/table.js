@@ -26,6 +26,11 @@ function Table(props) {
         createTdOne.innerHTML = expDates[i];
         createTdTwo.innerHTML = stdv_up[i].toFixed(2);
         createTdThree.innerHTML = stdv_down[i].toFixed(2);
+        //changes
+        createTdOne.classList.add("td-borders");
+        createTdTwo.classList.add("td-borders");
+        createTdThree.classList.add("td-borders");
+        //change end
         createTr.appendChild(createTdOne);
         createTr.appendChild(createTdTwo);
         createTr.appendChild(createTdThree);
@@ -35,12 +40,11 @@ function Table(props) {
     }
     updateTable();
   }, [expDates, stdv_up, stdv_down]);
-
   return (
-    <div className="table-class">
+    <div className="table-class" id="change-table-grid-size">
       <table className="mainTable" id="mainTableId">
         <thead className="thead-space">
-          <tr className="tr-space-even">
+          <tr className="tr-space-even" id="adjust-head-tr">
             <th className="th-space">Expiration Dates</th>
             <th className="th-space">Stdv Higher</th>
             <th className="th-space">Stdv Lower</th>

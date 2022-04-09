@@ -6,15 +6,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #4427c5;
+  /*background-color: #4427c5;*/
+  /*background-color: rgb(197, 33, 33);*/
+  /*background-color: rgb(26, 158, 151);*/
+  /*background-color: rgb(51, 129, 192);*/
+  background-color: rgb(18, 107, 180);
 }
 
-.menu-button {
+.menu-button-container {
   height: 30px;
   width: 30px;
   /*background-color: red;*/
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  /*background-color: purple;*/
+  justify-content: space-evenly;
+}
+
+.burger-one {
+  width: 100%;
+  height: 3px;
+  background-color: lightgray;
+}
+
+.burger-two {
+  width: 100%;
+  height: 3px;
+  background-color: lightgray;
+}
+
+.burger-three {
+  width: 100%;
+  height: 3px;
+  background-color: lightgray;
 }
 
 .hamburger-button {
@@ -25,6 +51,7 @@
 
 .nav-title {
   color: lightgray;
+  font-size: 18px;
 }
 
 .empty-space {

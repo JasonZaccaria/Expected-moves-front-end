@@ -37,12 +37,17 @@
   height: 250px;
   display: flex;
   flex-direction: column;
+  /*justify-content: center;*/
   /*added this in as extra spacing between our button and the quotes*/
 }
 
 .form-description {
   color: lightgray;
   margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
@@ -150,7 +155,8 @@
   height: 50%;
   width: 100%;
   /*background-color: rgb(31, 146, 146);*/
-  background-color: #4427c5;
+  /*background-color: #4427c5;*/
+  background-color: rgb(18, 107, 180);
   color: lightGray;
 }
 
