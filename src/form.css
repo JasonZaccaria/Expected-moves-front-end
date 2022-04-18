@@ -30,7 +30,7 @@
 
 .drop-items:hover {
   cursor: pointer;
-  background-color: #5633f7;
+  background-color: rgb(73, 147, 207);
 }
 .form-container {
   /*background-color: red;*/
@@ -43,11 +43,15 @@
 
 .form-description {
   color: lightgray;
-  margin-left: 15px;
+  /*margin-left: 15px;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.tablet-p {
+  display: none;
 }
 
 .form {
@@ -122,7 +126,8 @@
 }
 
 .button-submit {
-  background-color: rgb(75, 192, 192);
+  /*background-color: rgb(18, 107, 180);*/
+  background-color: rgb(73, 147, 207);
   color: lightGray;
   border: none;
   width: 108px;
@@ -205,4 +210,125 @@
 .mini {
   width: 100%;
   height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .form-class {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    min-height: 349px;
+  }
+
+  .form-container {
+    height: 75%;
+  }
+
+  .form-description {
+    display: none;
+  }
+  .tablet-p {
+    display: flex;
+    color: lightgray;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .radio-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .radio-sub-container {
+    width: min-content;
+    margin: 0;
+  }
+
+  .label-stdv {
+    width: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*.table {
+    margin: 0;
+    height: 80px;
+  }*/
+
+  .quotes {
+    height: 25%;
+  }
+
+  .th {
+    font-size: 0.8rem;
+  }
+  .td {
+    font-size: 0.8rem;
+  }
+
+  .Graph-container {
+    grid-column-start: 5;
+    grid-column-end: 13;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form-class {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .form-container {
+    height: 75%;
+  }
+
+  .quotes {
+    height: 25%;
+  }
+
+  .Graph-container {
+    grid-column-start: 4;
+    grid-column-end: 13;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .form-class {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    min-height: 349px;
+  }
+
+  .form-container {
+    height: 75%;
+  }
+
+  .table {
+    margin: 0;
+  }
+  .quotes {
+    height: 25%;
+  }
+
+  .td {
+    font-size: 1rem;
+  }
+
+  .Graph-container {
+    grid-column-start: 4;
+    grid-column-end: 13;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
 }

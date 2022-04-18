@@ -168,6 +168,10 @@ function Form() {
       <div className="form-class" id="form-id">
         <div className="form-container" id="form-container-id">
           <p className="form-description">
+            Welcome this tool allows you to view the{" "}
+            <span className="adjust-p">probability cone of a ticker</span>
+          </p>
+          <p className="tablet-p">
             Welcome this tool allows you to view the probability cone of a
             ticker
           </p>
@@ -192,7 +196,9 @@ function Form() {
               </div>
             </div>
             <div className="radio-container">
-              <label htmlFor="radio">Standard Deviation</label>
+              <label htmlFor="radio" className="label-stdv">
+                Standard Deviation
+              </label>
               <div className="radio-sub-container">
                 <label htmlFor="radioOne" className="labelsClass">
                   1

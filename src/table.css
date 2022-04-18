@@ -69,3 +69,40 @@
   text-align: center;
   color: lightgray;
 }
+
+@media screen and (min-width: 768px) {
+  .table-class {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  .mainTable {
+    height: 100%;
+  }
+  #mainTbody {
+    /*height: 350px;*/
+    height: 349px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .table-class {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .table-class {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  #mainTbody {
+    height: 490px;
+  }
+}

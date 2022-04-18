@@ -6,13 +6,42 @@ import DropDown from "./dropdown";
 import Form from "./form";
 import Graph from "./graph";
 import Table from "./table";
+import About from "./About";
 import reportWebVitals from "./reportWebVitals";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Navbar />
-    <DropDown />
-    <Form />
+    <Router>
+      <Routes>
+        <Route
+          path="/about"
+          element={
+            <>
+              <Navbar />
+              <DropDown />
+              <About />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <DropDown />
+              <Form />
+            </>
+          }
+        ></Route>
+      </Routes>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

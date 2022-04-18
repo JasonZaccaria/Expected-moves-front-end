@@ -1,10 +1,26 @@
 import "./navbar.css";
-
-function NavbarTwo() {
+import About from "./About";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
+function Navbar() {
   let bool = false;
-
+  //This event listener will resize our root grid rows to handle unexpected changes from our dropdown function
+  window.addEventListener("resize", function (event) {
+    if (this.window.innerWidth >= 768 && window.innerWidth < 1440) {
+      const getRoot = document.getElementById("root");
+      getRoot.style.gridTemplateRows = "50px 1fr 1fr";
+    } else if (this.window.innerWidth >= 1440) {
+      const getRoot = document.getElementById("root");
+      getRoot.style.gridTemplateRows = "50px 0.8fr 1fr";
+    }
+  });
   function dropDown() {
-    //here we are displaying our dropdown and transitioning hamburger button
     const lineOne = document.getElementById("lineOne");
     const lineTwo = document.getElementById("lineTwo");
     const lineThree = document.getElementById("lineThree");
@@ -40,6 +56,8 @@ function NavbarTwo() {
     }
   }
   return (
+    //<Router>
+    //<Routes>
     <div className="nav-bar">
       <div
         className="menu-button-container"
@@ -50,9 +68,15 @@ function NavbarTwo() {
         <div className="burger-two" id="lineTwo"></div>
         <div className="burger-three" id="lineThree"></div>
       </div>
+      <div className="navbar-buttons">
+        <div className="link-one">Home</div>
+        <div className="link-two">About</div>
+      </div>
       <h1 className="nav-title">Options Analysis Tool</h1>
       <div className="empty-space"></div>
     </div>
+    //</Routes>
+    //</Router>
   );
 }
-export default NavbarTwo;
+export default Navbar;
