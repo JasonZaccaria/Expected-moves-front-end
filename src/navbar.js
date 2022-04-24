@@ -10,14 +10,53 @@ import {
 } from "react-router-dom";
 function Navbar() {
   let bool = false;
+  //below grabs the path name to make sure resizing doesn't affect about path
+  let Path = window.location.pathname;
   //This event listener will resize our root grid rows to handle unexpected changes from our dropdown function
   window.addEventListener("resize", function (event) {
-    if (this.window.innerWidth >= 768 && window.innerWidth < 1440) {
+    if (
+      this.window.innerWidth >= 768 &&
+      window.innerWidth < 1440 &&
+      Path !== "/about"
+    ) {
       const getRoot = document.getElementById("root");
       getRoot.style.gridTemplateRows = "50px 1fr 1fr";
-    } else if (this.window.innerWidth >= 1440) {
+      const getDropDownContent = document.getElementById("drop-menu-id");
+      getDropDownContent.style.display = "none";
+      const lineOne = document.getElementById("lineOne");
+      const lineTwo = document.getElementById("lineTwo");
+      const lineThree = document.getElementById("lineThree");
+      lineOne.style.transform = "none";
+      lineTwo.style.transitionProperty = "none";
+      lineThree.style.transform = "none";
+      lineTwo.style.opacity = "1";
+      bool = false;
+    } else if (this.window.innerWidth >= 1440 && Path !== "/about") {
       const getRoot = document.getElementById("root");
       getRoot.style.gridTemplateRows = "50px 0.8fr 1fr";
+      const getDropDownContent = document.getElementById("drop-menu-id");
+      getDropDownContent.style.display = "none";
+      const lineOne = document.getElementById("lineOne");
+      const lineTwo = document.getElementById("lineTwo");
+      const lineThree = document.getElementById("lineThree");
+      lineOne.style.transform = "none";
+      lineTwo.style.transitionProperty = "none";
+      lineThree.style.transform = "none";
+      lineTwo.style.opacity = "1";
+      bool = false;
+    } else if (this.window.innerWidth >= 768 && Path === "/about") {
+      const getRoot = document.getElementById("root");
+      getRoot.style.gridTemplateRows = "50px 0px repeat(10, fit-content(100%)";
+      const getDropDownContent = document.getElementById("drop-menu-id");
+      getDropDownContent.style.display = "none";
+      const lineOne = document.getElementById("lineOne");
+      const lineTwo = document.getElementById("lineTwo");
+      const lineThree = document.getElementById("lineThree");
+      lineOne.style.transform = "none";
+      lineTwo.style.transitionProperty = "none";
+      lineThree.style.transform = "none";
+      lineTwo.style.opacity = "1";
+      bool = false;
     }
   });
   function dropDown() {
@@ -38,8 +77,13 @@ function Navbar() {
       action.style.display = "none";
       action.style.height = "0%";
       action.style.width = "0%";
-      resizePlus.style.gridTemplateRows = "50px 0px 325px 300px 345px";
-      action.style.transition = "all 5s ease-in-out";
+      if (Path === "/") {
+        resizePlus.style.gridTemplateRows = "50px 0px 325px 300px 345px";
+      } else {
+        resizePlus.style.gridTemplateRows =
+          "50px 0px repeat(10, fit-content(100%)";
+      }
+      //action.style.transition = "all 5s ease-in-out";
     } else {
       bool = true;
       lineOne.style.transform = "rotate(45deg) translate(6px, 6px)";
@@ -51,7 +95,12 @@ function Navbar() {
       action.style.display = "flex";
       action.style.height = "100%";
       action.style.width = "100%";
-      resizePlus.style.gridTemplateRows = "50px 150px 325px 300px 345px";
+      if (Path === "/") {
+        resizePlus.style.gridTemplateRows = "50px 150px 325px 300px 345px";
+      } else {
+        resizePlus.style.gridTemplateRows =
+          "50px 150px repeat(10, fit-content(100%)";
+      }
       //action.style.transition = "all 5s ease-in-out";
     }
   }
