@@ -23,8 +23,8 @@ function About() {
       <div className="description-container">
         <h2 className="description-h">What is the expected move of a stock?</h2>
         <p className="description-p">
-          The expected move is an estimate of how far up or down a stock price
-          will change at some specified point in time.
+          The expected move is an estimate of how far up or down the current
+          stock price will change in the future.
         </p>
       </div>
       <div className="About-tile-one">
@@ -32,33 +32,40 @@ function About() {
           Formula: (Stock Price) x (IV/100) x [square root (DTE/365)]
         </h3>
         <p className="description-p">
-          The formula above is how we can calculate the expected move. IV stands
-          for implied volatilty which is the forecasted volatilty estimate in
-          the future. This is usually obtained via an options pricing model. ex.
-          Black Scholes, binary pricing model...
+          The formula above is how we can calculate the expected move. We take
+          the underlying stock's current price and multiply that by the implied
+          volatility of the at the money options of that specific expiration
+          date. IV stands for implied volatility which is the forecasted
+          volatility estimate in the future. This is used to forecast the
+          potential movement of a stock price. IV is usually obtained via an
+          options pricing model. ex. Black Scholes, binary pricing model...
         </p>
       </div>
       <div className="About-tile-two">
-        <h3 className="formula">Standard deviations </h3>
+        <h3 className="formula">Standard deviations</h3>
         <p className="description-p">
           The formula above calculates the 1 standard deviation move in the
-          underlying stock price based on these paramateres. However we can
+          underlying stock price based on these parameters. However we can
           adjust the formula to view the 2 or even 3 standard deviations above
           or below the stock price as well by simply multiplying the IV by 2 or
-          3.
+          3. A one standard deviation range from the current stock price implies
+          a 68% probability of the price to stay inside that range.
         </p>
       </div>
       <div className="About-tile-three">
-        <h3 className="formula">Where is it helpful and limitations</h3>
+        <h3 className="formula">
+          What is expected move used for and limitations
+        </h3>
         <p className="description-p">
           What is this used for exactly? Well this can be used to gauge the
           probability range of an underlying's price at a particular time in the
-          future. This tool was built to help visualize the current probabitly
-          range for each expiration date based on the current IV. However, all
-          these variables are constantly changing and due to stock returns not
-          being normally distirbued due to black swan events. These estimates
-          should be taken with a grain of salt and used as a simple means to
-          view the current prediction of price movement in the future.
+          future. This tool was built to help visualize this price range and
+          give the user the ability to quickly view the expected move for any
+          ticker that has options. However, all these variables are constantly
+          changing and due to stock returns not being normally distributed due
+          to black swan events. These estimates should be taken with a grain of
+          salt and used as a simple means to view the current prediction of
+          price movement in the future.
         </p>
       </div>
       <div className="About-link-tiles">
