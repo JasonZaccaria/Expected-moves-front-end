@@ -3,9 +3,12 @@ import "./dropdown.css";
 function DropDown() {
   return (
     <div className="drop-menu" id="drop-menu-id">
-      <div className="drop-items">Probability Cone</div>
-      <div className="drop-items">Options Risk Graph</div>
-      <div className="drop-items">About</div>
+      <a href="/" className="dropdown-link-home">
+        <div className="drop-items">Home</div>
+      </a>
+      <a href="/about" className="dropdown-link-about">
+        <div className="drop-items">About</div>
+      </a>
     </div>
   );
 }

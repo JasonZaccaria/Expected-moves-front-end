@@ -14,9 +14,13 @@ function Navbar() {
   let Path = window.location.pathname;
   //This event listener will resize our root grid rows to handle unexpected changes from our dropdown function
   window.addEventListener("resize", function (event) {
-    if (
+    console.log(this.window.innerWidth);
+    if (this.window.innerWidth < 768 && Path !== "/about") {
+      const getRoot = document.getElementById("root");
+      getRoot.style.gridTemplateRows = "50px 0px 325px 300px 345px";
+    } else if (
       this.window.innerWidth >= 768 &&
-      window.innerWidth < 1440 &&
+      this.window.innerWidth < 1440 &&
       Path !== "/about"
     ) {
       const getRoot = document.getElementById("root");
@@ -118,8 +122,12 @@ function Navbar() {
         <div className="burger-three" id="lineThree"></div>
       </div>
       <div className="navbar-buttons">
-        <div className="link-one">Home</div>
-        <div className="link-two">About</div>
+        <a href="/" className="home-link">
+          <div className="link-one">Home</div>
+        </a>
+        <a href="/about" className="about-link">
+          <div className="link-two">About</div>
+        </a>
       </div>
       <h1 className="nav-title">Options Analysis Tool</h1>
       <div className="empty-space"></div>
