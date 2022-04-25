@@ -6,22 +6,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*background-color: #4427c5;*/
-  /*background-color: rgb(197, 33, 33);*/
-  /*background-color: rgb(26, 158, 151);*/
-  /*background-color: rgb(51, 129, 192);*/
   background-color: rgb(18, 107, 180);
 }
 
 .menu-button-container {
   height: 30px;
   width: 30px;
-  /*background-color: red;*/
-  /*border-radius: 50%;*/
   margin-left: 5px;
   display: flex;
   flex-direction: column;
-  /*background-color: purple;*/
   justify-content: space-evenly;
 }
 
@@ -89,17 +82,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  /*.nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }*/
   .nav-bar {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 50px;
-    /*align-items: center;
-    justify-content: center;*/
   }
 
   .menu-button-container {

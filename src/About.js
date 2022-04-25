@@ -12,8 +12,6 @@ import {
 function About() {
   function changeRootGrid() {
     const getRoot = document.getElementById("root");
-    //getRoot.style.gridTemplateRows = "50px repeat(11, 1fr)"; THIS IS OLD
-    //getRoot.style.gridTemplateRows = "50px repeat(11, fit-content(100%))"; USED TO BE
     getRoot.style.gridTemplateRows = "50px 0px repeat(10, fit-content(100%)";
     getRoot.style.rowGap = "1rem";
   }

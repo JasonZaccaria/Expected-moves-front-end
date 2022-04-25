@@ -1,9 +1,6 @@
 .description-container {
-  /*background-color: red;*/
   grid-column-start: 1;
   grid-column-end: 13;
-  /*grid-row-start: 2;
-  grid-row-end: 3;*/
   grid-row-start: 3;
   grid-row-end: 4;
   text-align: center;
@@ -25,8 +22,6 @@
   background-color: rgb(18, 107, 180);
   grid-column-start: 2;
   grid-column-end: 12;
-  /*grid-row-start: 3;
-  grid-row-end: 4;*/
   grid-row-start: 4;
   grid-row-end: 5;
   text-align: center;
@@ -37,8 +32,6 @@
   background-color: rgb(18, 107, 180);
   grid-column-start: 2;
   grid-column-end: 12;
-  /*grid-row-start: 4;
-  grid-row-end: 5;*/
   grid-row-start: 5;
   grid-row-end: 6;
   text-align: center;
@@ -49,8 +42,6 @@
   background-color: rgb(18, 107, 180);
   grid-column-start: 2;
   grid-column-end: 12;
-  /*grid-row-start: 5;
-  grid-row-end: 6;*/
   grid-row-start: 6;
   grid-row-end: 7;
   text-align: center;
@@ -61,8 +52,6 @@
   background-color: rgb(18, 107, 180);
   grid-column-start: 2;
   grid-column-end: 12;
-  /*grid-row-start: 6;
-  grid-row-end: 7;*/
   grid-row-start: 7;
   grid-row-end: 8;
   display: flex;
@@ -80,19 +69,16 @@
 
 .image-one-container {
   width: 100%;
-  /*height: 25%;*/
   height: 30%;
 }
 
 .image-two-container {
   width: 100%;
-  /*height: 25%;*/
   height: 30%;
 }
 
 .image-three-container {
   width: 100%;
-  /*height: 25%;*/
   height: 30%;
 }
 

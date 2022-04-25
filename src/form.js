@@ -2,13 +2,10 @@ import "./form.css";
 import React, { useState, useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-//import TestGraph from "./testGraph.js";
-//import { Chart } from "chart.js";
 import Table from "./table.js";
 
 function Form() {
-  //Below we have states for our Table component to create a table after graph
-  //Below we create states for our x axis (expiration dates column).
+  //Below we have states for our Table component to create a table
   let [expDates, setExpDates] = useState([]);
   let [stdv_up, setStdv_up] = useState([]);
   let [stdv_down, setStdv_down] = useState([]);
@@ -29,34 +26,30 @@ function Form() {
   let stopInterval = useRef();
   let toggleBool;
   let data = {
-    labels: expDates, //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: expDates,
     datasets: [
       {
         label: "Stdv higher",
-        data: stdv_up, //[33, 53, 85, 41, 44, 65],
+        data: stdv_up,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
       },
       {
         label: "Stdv Lower",
-        data: stdv_down, //[33, 25, 35, 51, 54, 76],
+        data: stdv_down,
         fill: false,
         borderColor: "#742774",
       },
     ],
   };
-  //This is our onclick function to access our backends rest api for data
+
   async function changeMe(e) {
-    //we start off by disabling our button while running and preventing html form from submitting
+    /*This is our onclick function to access our backends rest api for data
+    we start off by disabling our button while running and preventing html form from submitting*/
     setIsDisabled(true);
     e.preventDefault();
-    //let resize_table = document.getElementById("root");
-    //resize_table.style.gridTemplateRows = "50px 0px 325px 300px 345px";
-    //let test_drop = document.getElementById("drop-menu-id");
-    //test_drop.style.display = "none";
-    //let test_var = document.getElementById("change-table-grid-size").offsetHeight;
-    //console.log(test_var);
+
     try {
       clear.current++;
       //below is our post request
@@ -124,10 +117,10 @@ function Form() {
   //Below we use count.current to keep track of first render and then update our states and change data
   useEffect(() => {
     if (count.current) {
-      console.log(stopInterval);
+      //console.log(stopInterval);
       let update = [callPost, callGet];
-      console.log(update);
-      console.log(update[1]["quotes"]["Open"][0]);
+      //console.log(update);
+      //console.log(update[1]["quotes"]["Open"][0]);
 
       //Below we are seperating out all the arrays to get ready to reset our state to these new arrays
       let updateX = update[0]["expected_moves"]["exp_dates"];
@@ -142,18 +135,18 @@ function Form() {
       setUpdateVol(update[1]["quotes"]["Volume"][0]);
 
       data = {
-        labels: setExpDates(updateX), //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        labels: setExpDates(updateX),
         datasets: [
           {
             label: "First dataset",
-            data: setStdv_up(updateStdvUp), //[33, 53, 85, 41, 44, 65],
+            data: setStdv_up(updateStdvUp),
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
           },
           {
             label: "Second dataset",
-            data: setStdv_down(updateStdvDown), //[33, 25, 35, 51, 54, 76],
+            data: setStdv_down(updateStdvDown),
             fill: false,
             borderColor: "#742774",
           },

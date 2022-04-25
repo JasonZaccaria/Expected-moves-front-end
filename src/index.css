@@ -6,10 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(17, 17, 17);
-  /*background-image: linear-gradient(rgb(10, 14, 15), rgb(16, 134, 163));*/
-  /*background-image: linear-gradient(rgb(62, 18, 68), rgb(214, 105, 16));*/
-  /*background-image: linear-gradient(rgb(23, 23, 26), rgb(12, 10, 126));*/
-  /*background-color: rgb(22, 22, 22);*/
 }
 
 code {
@@ -23,12 +19,10 @@ code {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 50px 0px 325px 300px 345px;
-  /*grid-template-rows: 50px 0px 325px 300px 45px;*/
 }
 
 @media screen and (min-width: 768px) {
   #root {
-    /*grid-template-rows: 50px 1fr 1fr;*/
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -39,7 +33,6 @@ code {
 
 @media screen and (min-width: 1440px) {
   #root {
-    /*grid-template-rows: 50px 1fr 1fr;*/
     height: 100vh;
     width: 100vw;
     display: grid;

@@ -2,16 +2,16 @@ import "./table.css";
 import { useState, useEffect } from "react";
 
 function Table(props) {
-  //Here are our variabels we will pass into the table. These are props as well
+  //Here are our variables we will pass into the table. These are props as well
   let expDates = props.expDates;
   let stdv_up = props.stdv_up;
   let stdv_down = props.stdv_down;
-  console.log(expDates);
+  //console.log(expDates);
 
   //Below we use useEffect in order to update our table when our expDates variables's state is updated
   useEffect(() => {
     function updateTable() {
-      console.log(expDates.length);
+      //console.log(expDates.length);
       let getTbody = document.getElementById("mainTbody");
       while (getTbody.firstChild) {
         getTbody.removeChild(getTbody.lastChild);
@@ -19,22 +19,22 @@ function Table(props) {
       for (let i = 0; i < expDates.length; i++) {
         let createTr = document.createElement("tr");
         createTr.classList.add("tr-space-even");
-        //changes start here:
+
         let createTdOne = document.createElement("td");
         let createTdTwo = document.createElement("td");
         let createTdThree = document.createElement("td");
         createTdOne.innerHTML = expDates[i];
         createTdTwo.innerHTML = stdv_up[i].toFixed(2);
         createTdThree.innerHTML = stdv_down[i].toFixed(2);
-        //changes
+
         createTdOne.classList.add("td-borders");
         createTdTwo.classList.add("td-borders");
         createTdThree.classList.add("td-borders");
-        //change end
+
         createTr.appendChild(createTdOne);
         createTr.appendChild(createTdTwo);
         createTr.appendChild(createTdThree);
-        //changes end here;
+
         getTbody.appendChild(createTr);
       }
     }

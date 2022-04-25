@@ -8,13 +8,14 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+
 function Navbar() {
   let bool = false;
   //below grabs the path name to make sure resizing doesn't affect about path
   let Path = window.location.pathname;
   //This event listener will resize our root grid rows to handle unexpected changes from our dropdown function
   window.addEventListener("resize", function (event) {
-    console.log(this.window.innerWidth);
+    //console.log(this.window.innerWidth);
     if (this.window.innerWidth < 768 && Path !== "/about") {
       const getRoot = document.getElementById("root");
       getRoot.style.gridTemplateRows = "50px 0px 325px 300px 345px";
@@ -87,7 +88,6 @@ function Navbar() {
         resizePlus.style.gridTemplateRows =
           "50px 0px repeat(10, fit-content(100%)";
       }
-      //action.style.transition = "all 5s ease-in-out";
     } else {
       bool = true;
       lineOne.style.transform = "rotate(45deg) translate(6px, 6px)";
@@ -105,12 +105,9 @@ function Navbar() {
         resizePlus.style.gridTemplateRows =
           "50px 150px repeat(10, fit-content(100%)";
       }
-      //action.style.transition = "all 5s ease-in-out";
     }
   }
   return (
-    //<Router>
-    //<Routes>
     <div className="nav-bar">
       <div
         className="menu-button-container"
@@ -132,8 +129,6 @@ function Navbar() {
       <h1 className="nav-title">Options Analysis Tool</h1>
       <div className="empty-space"></div>
     </div>
-    //</Routes>
-    //</Router>
   );
 }
 export default Navbar;
