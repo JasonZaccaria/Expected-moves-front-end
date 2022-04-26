@@ -54,7 +54,7 @@ function Form() {
       clear.current++;
       //below is our post request
       async function post() {
-        const url = "http://127.0.0.1:8000/post/";
+        const url = "https://expectedmovement.herokuapp.com/post/"; //"http://127.0.0.1:8000/post/";
         const data = new URLSearchParams();
         const formElement = document.getElementById("form-itself");
         for (const pair of new FormData(formElement)) {
@@ -70,9 +70,12 @@ function Form() {
       }
       //below is our get request
       async function get() {
-        const response = await fetch("http://127.0.0.1:8000/get/", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://expectedmovement.herokuapp.com/get/",
+          {
+            credentials: "include",
+          }
+        );
         return response.json();
       }
       //below we are sending both requests out at the same time as well as repeating our get request with set interval
@@ -171,7 +174,7 @@ function Form() {
           <form
             id="form-itself"
             className="form"
-            action="http://127.0.0.1:8000/post/"
+            action="https://expectedmovement.herokuapp.com/post/" //"http://127.0.0.1:8000/post/"
             method="POST"
           >
             <div className="form-top" id="form-top-id">
