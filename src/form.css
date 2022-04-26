@@ -111,6 +111,7 @@
   border: none;
   width: 108px;
   height: 100%;
+  cursor: pointer;
 }
 
 .button-submit:active {
@@ -220,6 +221,18 @@
   .radio-sub-container {
     width: min-content;
     margin: 0;
+  }
+
+  #radioOne {
+    cursor: pointer;
+  }
+
+  #radioTwo {
+    cursor: pointer;
+  }
+
+  #radioThree {
+    cursor: pointer;
   }
 
   .label-stdv {
