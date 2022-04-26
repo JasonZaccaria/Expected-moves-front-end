@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Navbar from "./navbar";
-import DropDown from "./dropdown";
-import Form from "./form";
-import Graph from "./graph";
-import Table from "./table";
-import About from "./About";
+import Navbar from "./components/navbar";
+import DropDown from "./components/dropdown";
+import Form from "./components/form";
+import Graph from "./components/graph";
+import Table from "./components/table";
+import About from "./components/About";
 import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter as Router,

@@ -1,4 +1,5 @@
-import "./About.css";
+//import "./About.css";
+import "../styles/About.css";
 import Navbar from "./navbar";
 import React, { useState, useRef, useEffect } from "react";
 import {
@@ -73,7 +74,7 @@ function About() {
             <a href="asdfa">
               <img
                 className="image-one"
-                src={require("./assets/tastytrade.jpg")}
+                src={require("../assets/tastytrade.jpg")}
               ></img>
             </a>
           </div>
@@ -81,7 +82,7 @@ function About() {
             <a href="asa">
               <img
                 className="image-two"
-                src={require("./assets/projectoption.jpg")}
+                src={require("../assets/projectoption.jpg")}
               ></img>
             </a>
           </div>
@@ -89,7 +90,7 @@ function About() {
             <a href="asd">
               <img
                 className="image-three"
-                src={require("./assets/investopedia.png")}
+                src={require("../assets/investopedia.png")}
               ></img>
             </a>
           </div>

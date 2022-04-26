@@ -1,4 +1,4 @@
-import "./table.css";
+import "../styles/table.css";
 import { useState, useEffect } from "react";
 
 function Table(props) {

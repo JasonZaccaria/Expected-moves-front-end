@@ -1,4 +1,4 @@
-import "./form.css";
+import "../styles/form.css";
 import React, { useState, useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
