@@ -3,4 +3,4 @@ This application is part of an options analysis website I am developing using dj
 
 <h1>Here is the link to my site below</h1>
 https://jocular-bunny-b71577.netlify.app/
-![image](src/assets/screenShot.PNG)
+<img src="src/assets/screenShot.PNG" width=900>
