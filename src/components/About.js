@@ -71,7 +71,7 @@ function About() {
         <h3 className="link-description">Here are some useful links</h3>
         <div className="all-images">
           <div className="image-one-container">
-            <a href="asdfa">
+            <a href="https://www.tastytrade.com/news-insights/expected-move-sanity-checking-trade-ideas">
               <img
                 className="image-one"
                 src={require("../assets/tastytrade.jpg")}
@@ -79,7 +79,7 @@ function About() {
             </a>
           </div>
           <div className="image-two-container">
-            <a href="asa">
+            <a href="https://www.projectfinance.com/expected-move">
               <img
                 className="image-two"
                 src={require("../assets/projectoption.jpg")}
@@ -87,7 +87,7 @@ function About() {
             </a>
           </div>
           <div className="image-three-container">
-            <a href="asd">
+            <a href="https://www.investopedia.com/articles/optioninvestor/11/predict-earnings-with-options.asp">
               <img
                 className="image-three"
                 src={require("../assets/investopedia.png")}
